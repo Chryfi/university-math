@@ -103,6 +103,12 @@ public class Simplex
         /* find pivot row in the pivot column */
         for (int row = 0; row < tableau.getRowCount(); row++)
         {
+            /* Ignore Z row */
+            if (tableau.getTableauRowType(row).type == SimplexTableau.TableauType.Z)
+            {
+                continue;
+            }
+
             double x = tableau.getValue(row, pivotCol);
 
             /* b should not become negative nor is b / 0 allowed */
